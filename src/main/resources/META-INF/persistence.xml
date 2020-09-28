@@ -4,6 +4,7 @@
     <jta-data-source>java:/jboss/datasources/pichincha</jta-data-source>
     <class>com.jolube.soaptarjetas.model.Tarjeta</class>
     <class>com.jolube.soaptarjetas.model.Cliente</class>
+    <class>com.jolube.soaptarjetas.facade.Customer</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>

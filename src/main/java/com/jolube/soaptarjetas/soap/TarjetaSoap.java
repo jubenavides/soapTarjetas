@@ -11,12 +11,13 @@ import javax.inject.Inject;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.xml.ws.RequestWrapper;
 
 /**
  *
  * @author jolub
  */
-@WebService(serviceName = "TarjetaSoap")
+@WebService(serviceName = "TarjetaSoap" , targetNamespace = "http://soap.soaptarjetas.jolube.com/")
 public class TarjetaSoap {
 
     @Inject
@@ -26,9 +27,10 @@ public class TarjetaSoap {
      * Web service operation
      */
     @WebMethod(operationName = "pagoTarjeta")
-    public Boolean pagoTarjeta(@WebParam(name = "identificationType") String tipoIdentificacion,
-            @WebParam(name = "identification") String identificacion,
-            @WebParam(name = "cardNumber") String numeroTarjeta, @WebParam(name = "amount") String monto) {
+    public Boolean pagoTarjeta(@WebParam(name = "identificationType" , targetNamespace = "http://soap.soaptarjetas.jolube.com/") String tipoIdentificacion,
+            @WebParam(name = "identification", targetNamespace = "http://soap.soaptarjetas.jolube.com/") String identificacion,
+            @WebParam(name = "cardNumber", targetNamespace = "http://soap.soaptarjetas.jolube.com/") String numeroTarjeta, @WebParam(name = "amount", targetNamespace = "http://soap.soaptarjetas.jolube.com/") String monto) {
+        System.out.println("Entra metodo soap,: " + numeroTarjeta);
         return service.pagarTarjeta(tipoIdentificacion, identificacion, numeroTarjeta, new BigInteger(monto));
     }
 }

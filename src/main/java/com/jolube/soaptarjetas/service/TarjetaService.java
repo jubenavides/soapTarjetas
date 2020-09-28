@@ -21,6 +21,7 @@ public class TarjetaService {
 
     public Boolean pagarTarjeta(String tipoIdentificacion, String identificacion, String numeroTarjeta, BigInteger monto) {
         Tarjeta tarjeta = tf.find(numeroTarjeta);
+          System.out.println("Entra metodo servicio: " + numeroTarjeta);
         if (tarjeta.getCodCliente().getTipoIdentificacion().compareToIgnoreCase(tipoIdentificacion) == 0
                 && tarjeta.getCodCliente().getIdentificacion().compareToIgnoreCase(identificacion) == 0) {
             tarjeta.setSaldo(tarjeta.getSaldo().subtract(monto));
